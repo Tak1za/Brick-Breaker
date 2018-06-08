@@ -17,6 +17,7 @@ const BRICK_W = 80;
 const BRICK_GAP = 2;
 const BRICK_ROWS = 14;
 const BRICK_COLS = 10;
+var num = BRICK_COLS * BRICK_ROWS;
 
 var brickGrid = new Array(BRICK_COLS * BRICK_ROWS);
 
@@ -118,6 +119,8 @@ function isBrickAtTileCoord(brickTileCol, brickTileRow) {
   return brickGrid[brickIndex] == 1;
 }
 
+
+
 function breakAndBounceOffBrickAtPixelCoord(pixelX, pixelY) {
   var tileCol = Math.floor(pixelX / BRICK_W);
   var tileRow = Math.floor(pixelY / BRICK_H);
@@ -163,6 +166,11 @@ function breakAndBounceOffBrickAtPixelCoord(pixelX, pixelY) {
     }
 
     brickGrid[brickIndex] = 0;
+    num--;
+    if(num==0){
+        num=BRICK_COLS * BRICK_ROWS;
+        resetBricks();
+    }
   }
 }
 
